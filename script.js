@@ -20,7 +20,11 @@
     tipButtons.forEach(button => {
         button.addEventListener("click", function () {
             customTipInput.value = "";
-            selectedTipPercent = parseFloat(button.getAttribute("data-percent"));
+            if (button.id === "no-tip") {
+                selectedTipPercent = 0;
+            } else {
+                selectedTipPercent = parseFloat(button.textContent.replace("%", ""));
+            }
             updateTipAndTotal();
         });
     });
